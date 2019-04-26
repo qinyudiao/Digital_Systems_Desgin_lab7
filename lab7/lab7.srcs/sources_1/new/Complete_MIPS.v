@@ -2,12 +2,14 @@ module Complete_MIPS(CLK, RST, A_Out, D_Out);
   // Will need to be modified to add functionality
   input CLK;
   input RST;
-  output A_Out;
-  output D_Out;
+  output [31:0] A_Out;
+  output [31:0] D_Out;
 
   wire CS, WE;
   wire [6:0] ADDR;
   wire [31:0] Mem_Bus;
+  assign A_Out = ADDR;
+  assign D_Out = Mem_Bus;
 
   MIPS CPU(CLK, RST, CS, WE, ADDR, Mem_Bus);
   Memory MEM(CS, WE, CLK, ADDR, Mem_Bus);
