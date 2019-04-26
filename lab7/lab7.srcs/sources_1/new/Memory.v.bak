@@ -13,13 +13,13 @@ module Memory(CS, WE, CLK, ADDR, Mem_Bus);
   initial
   begin
     /* Write your Verilog-Text IO code here */
-	for (i=0; i<128; i= i+1) begin
+	for (i=0; i<128; i++) begin
 		RAM[i] = 0;
 	end
 	#10
 	$readmemb("", RAM);
 	#10
-	for (i=0; i<128; i = i+1) begin
+	for (i=0; i<128; i++) begin
 		$display("RAM[%i]%b", i, RAM[i]);
 	end
 	#10
