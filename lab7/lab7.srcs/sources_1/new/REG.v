@@ -1,4 +1,4 @@
-module REG(CLK, RegW, DR, SR1, SR2, Reg_In, ReadReg1, ReadReg2);
+module REG(CLK, RegW, DR, SR1, SR2, Reg_In, ReadReg1, ReadReg2, ledOut);
   input CLK;
   input RegW;
   input [4:0] DR;
@@ -7,10 +7,13 @@ module REG(CLK, RegW, DR, SR1, SR2, Reg_In, ReadReg1, ReadReg2);
   input [31:0] Reg_In;
   output reg [31:0] ReadReg1;
   output reg [31:0] ReadReg2;
+  
+  output[7:0] ledOut;
 
   reg [31:0] REG [0:31];
   integer i;
 
+  assign ledOut = REG[1][7:0];
   initial begin
     ReadReg1 = 0;
     ReadReg2 = 0;
