@@ -1,10 +1,10 @@
-module Complete_MIPS(CLK, RST, HALT, led, A_Out, D_Out);
+module Complete_MIPS(CLK, RST, HALT, led);
   // Will need to be modified to add functionality
   input CLK;
   input RST;
   input HALT;
-  output [31:0] A_Out;
-  output [31:0] D_Out;
+  wire [6:0] A_Out;
+  wire [31:0] D_Out;
   output[7:0] led;
 
   wire CS, WE;
@@ -15,7 +15,8 @@ module Complete_MIPS(CLK, RST, HALT, led, A_Out, D_Out);
   
   wire slowClk;
 
-  clockdiv slow_clk(5000000, CLK, slowClk);
+  clockdiv slow_clk(10000000, CLK, slowClk);
+  
   MIPS CPU(slowClk, RST, CS, WE, ADDR, Mem_Bus, led, HALT);
   Memory MEM(CS, WE, slowClk, ADDR, Mem_Bus);
 

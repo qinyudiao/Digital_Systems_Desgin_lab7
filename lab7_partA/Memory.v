@@ -17,7 +17,7 @@ module Memory(CS, WE, CLK, ADDR, Mem_Bus);
 		RAM[i] = 0;
 	end
 	#10
-	$readmemb("put-address-for-text-file-here", RAM);
+	$readmemh("MIPS_Instructions.txt", RAM);
 	#10
 	for (i=0; i<128; i = i+1) begin
 		$display("RAM[%i]%b", i, RAM[i]);

@@ -1,3 +1,5 @@
+`timescale 1ns / 10ps
+
 module clockdiv(count_val, clk100Mhz, slowClk);
   input clk100Mhz; //fast clock
   input [27:0] count_val;
