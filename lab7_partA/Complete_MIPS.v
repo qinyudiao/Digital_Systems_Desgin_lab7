@@ -15,7 +15,7 @@ module Complete_MIPS(CLK, RST, HALT, led);
   
   wire slowClk;
 
-  clockdiv slow_clk(10000000, CLK, slowClk);
+  clockdiv slow_clk(2500000, CLK, slowClk);
   
   MIPS CPU(slowClk, RST, CS, WE, ADDR, Mem_Bus, led, HALT);
   Memory MEM(CS, WE, slowClk, ADDR, Mem_Bus);
