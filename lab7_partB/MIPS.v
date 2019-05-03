@@ -4,9 +4,9 @@
 `define f_code instr[5:0]
 `define numshift instr[10:6]
 
-module MIPS (CLK, RST, CS, WE, ADDR, Mem_Bus, sevenSegCLK, BTN, SW, AN, seven);
+module MIPS (CLK, RST, CS, WE, ADDR, Mem_Bus, sevenSegCLK, btnr, SW, AN, seven);
   input CLK, RST, sevenSegCLK;
-  input [1:0] BTN;
+  input btnr;
   input [2:0] SW;
   output reg CS, WE;
   output [6:0] ADDR;
@@ -83,7 +83,7 @@ module MIPS (CLK, RST, CS, WE, ADDR, Mem_Bus, sevenSegCLK, BTN, SW, AN, seven);
 
   //drive memory bus only during writes
   assign ADDR = (fetchDorI)? pc : alu_result_save[6:0]; //ADDR Mux
-  REG Register(CLK, regw, dr, `sr1, `sr2, reg_in, BTN, SW, AN, seven, readreg1, readreg2);
+  REG Register(CLK, regw, dr, `sr1, `sr2, reg_in, btnr, SW, AN, seven, readreg1, readreg2);
 
   initial begin
     pc = 0;
